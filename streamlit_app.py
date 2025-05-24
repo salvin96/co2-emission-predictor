@@ -52,27 +52,27 @@ st.sidebar.header("🎛️ Input Features")
 
 # 🪨 Coal CO₂
 st.sidebar.markdown("#### <span style='color:#D2691E'>🪨 Coal CO₂ (Mt)</span>", unsafe_allow_html=True)
-coal_co2 = st.sidebar.slider("", 0.0, 4000.0, 1000.0)
+coal_co2 = st.sidebar.slider("Coal CO₂", 0.0, 4000.0, 1000.0, label_visibility="collapsed")
 st.sidebar.caption("Emissions from coal-based energy and industry.")
 
 # 🛢️ Oil CO₂
 st.sidebar.markdown("#### <span style='color:#4682B4'>🛢️ Oil CO₂ (Mt)</span>", unsafe_allow_html=True)
-oil_co2 = st.sidebar.slider("", 0.0, 4000.0, 1000.0)
+oil_co2 = st.sidebar.slider("Oil CO₂", 0.0, 4000.0, 1000.0, label_visibility="collapsed")
 st.sidebar.caption("Emissions from petroleum-based sources.")
 
 # 💰 GDP
 st.sidebar.markdown("#### <span style='color:#228B22'>💰 GDP (Trillions)</span>", unsafe_allow_html=True)
-gdp = st.sidebar.slider("", 0.0, 30.0, 15.0)
+gdp = st.sidebar.slider("GDP", 0.0, 30.0, 15.0, label_visibility="collapsed")
 st.sidebar.caption("Gross Domestic Product (economic output).")
 
 # 👥 Population
 st.sidebar.markdown("#### <span style='color:#8A2BE2'>👥 Population (Billions)</span>", unsafe_allow_html=True)
-population = st.sidebar.slider("", 0.0, 1.5, 0.7)
+population = st.sidebar.slider("Population", 0.0, 1.5, 0.7, label_visibility="collapsed")
 st.sidebar.caption("Population of the country or region.")
 
 # 📅 Year
 st.sidebar.markdown("#### <span style='color:#696969'>📅 Year</span>", unsafe_allow_html=True)
-year = st.sidebar.slider("", 1950, 2025, 2020)
+year = st.sidebar.slider("Year", 1950, 2025, 2020, label_visibility="collapsed")
 st.sidebar.caption("Year of prediction context.")
 
 # Prepare input DataFrame
