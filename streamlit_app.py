@@ -52,11 +52,11 @@ st.sidebar.header("🧮 Input Features")
 
 # Sliders with color-coded headers
 st.sidebar.markdown("#### <span style='color:#D2691E'>🪨 Coal CO₂ (Mt)</span>", unsafe_allow_html=True)
-coal_co2 = st.sidebar.slider("coal", 0.0, 4000.0, 1000.0, label_visibility="collapsed")
+coal_co2 = st.sidebar.slider("coal", 0.0, 8000.0, 1000.0, label_visibility="collapsed")
 st.sidebar.caption("Emissions from coal-based energy and industry.")
 
 st.sidebar.markdown("#### <span style='color:#4682B4'>🛢️ Oil CO₂ (Mt)</span>", unsafe_allow_html=True)
-oil_co2 = st.sidebar.slider("oil", 0.0, 4000.0, 1000.0, label_visibility="collapsed")
+oil_co2 = st.sidebar.slider("oil", 0.0, 8000.0, 1000.0, label_visibility="collapsed")
 st.sidebar.caption("Emissions from petroleum-based sources.")
 
 st.sidebar.markdown("#### <span style='color:#228B22'>💰 GDP (Trillions)</span>", unsafe_allow_html=True)
