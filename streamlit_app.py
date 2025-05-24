@@ -16,7 +16,7 @@ def load_lottieurl(url: str):
 lottie_login = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_yr6zz3wv.json")
 
 # 🌍 GitHub-hosted background image URL (uploaded as oso.jpg)
-sidebar_bg_url = "https://raw.githubusercontent.com/salvin96/co2-emission-predictor/main/oso.jpg"
+sidebar_bg_url = "https://raw.githubusercontent.com/salvin96/co2-emission-predictor/main/oso.jpeg"
 
 # 🌈 Apply background to sidebar only with translucent overlay
 st.markdown(f"""
