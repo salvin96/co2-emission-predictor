@@ -22,8 +22,8 @@ scaler = load_scaler()
 # Sidebar inputs
 st.sidebar.header("Input Features")
 
-coal_co2 = st.sidebar.slider("Coal CO₂ (Mt)", 0.0, 4000.0, 1000.0)
-oil_co2 = st.sidebar.slider("Oil CO₂ (Mt)", 0.0, 4000.0, 1000.0)
+coal_co2 = st.sidebar.slider("Coal CO₂ (Mt)", 0.0, 8000.0, 1000.0)
+oil_co2 = st.sidebar.slider("Oil CO₂ (Mt)", 0.0, 8000.0, 1000.0)
 gdp = st.sidebar.slider("GDP (in trillions)", 0.0, 30.0, 15.0)
 population = st.sidebar.slider("Population (in billions)", 0.0, 1.5, 0.7)
 year = st.sidebar.slider("Year", 1950, 2025, 2020)
