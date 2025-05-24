@@ -43,11 +43,14 @@ scaled_input = scaler.transform(input_df)
 # Predict
 if st.button("Predict CO₂ Emissions"):
     prediction = model.predict(scaled_input)[0]
-    st.success(f"🌱 Predicted CO₂ Emission: {prediction:.2f} Megatons")
 
-    # Bar chart of inputs
-    st.markdown("### 🔍 Feature Inputs Overview")
-    st.bar_chart(input_df.T.rename(columns={0: "User Input"}))
+    # CO₂ Classification
+    if prediction < 3000:
+        st.success(f"🌱🟢 CO₂ Emission: {prediction:.2f} Megatons — **Green Zone** (Safe)")
+    elif 3000 <= prediction <= 8000:
+        st.warning(f"🌱🟡 CO₂ Emission: {prediction:.2f} Megatons — **Yellow Zone** (Moderate)")
+    else:
+        st.error(f"🌱🔴 CO₂ Emission: {prediction:.2f} Megatons — **Red Zone** (High!)")
 
 # Footer
 st.markdown("---")
