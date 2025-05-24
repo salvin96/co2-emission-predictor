@@ -27,7 +27,7 @@ if not st.session_state.username:
     if st.button("Start"):
         if username.strip():
             st.session_state.username = username.strip().title()
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.warning("Please enter a valid name.")
     st.stop()
