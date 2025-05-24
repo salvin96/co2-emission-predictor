@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import joblib
@@ -8,26 +7,29 @@ import numpy as np
 st.title("🌍 CO₂ Emission Prediction App")
 st.write("Powered by Random Forest | Interactive & Free")
 
-# Load model and data
+# Load model
 @st.cache_resource
 def load_model():
     return joblib.load("random_forest_model.pkl")
 
 model = load_model()
 
-# Define input features (customize based on your dataset)
+# Sidebar inputs
 st.sidebar.header("Input Features")
 
-# Example inputs - to be replaced by actual features in the dataset
-feature_1 = st.sidebar.slider("GDP (in trillions)", 0.0, 30.0, 15.0)
-feature_2 = st.sidebar.slider("Energy Consumption (TWh)", 0.0, 50000.0, 25000.0)
-feature_3 = st.sidebar.slider("Population (in billions)", 0.0, 10.0, 5.0)
+coal_co2 = st.sidebar.slider("Coal CO₂ (Mt)", 0.0, 50000.0, 10000.0)
+oil_co2 = st.sidebar.slider("Oil CO₂ (Mt)", 0.0, 50000.0, 10000.0)
+gdp = st.sidebar.slider("GDP (in trillions)", 0.0, 30.0, 15.0)
+population = st.sidebar.slider("Population (in billions)", 0.0, 10.0, 5.0)
+year = st.sidebar.slider("Year", 1950, 2025, 2020)
 
 # Prepare input DataFrame
 input_df = pd.DataFrame({
-    "gdp": [feature_1],
-    "energy_consumption": [feature_2],
-    "population": [feature_3]
+    "coal_co2": [coal_co2],
+    "oil_co2": [oil_co2],
+    "gdp": [gdp],
+    "population": [population],
+    "year": [year]
 })
 
 # Prediction
