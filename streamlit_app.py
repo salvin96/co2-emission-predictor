@@ -74,28 +74,35 @@ st.sidebar.caption("Year of prediction context.")
 # Style each slider with its color using nth-of-type trick
 st.markdown("""
     <style>
-        /* Coal CO₂ (1st slider) */
-        section[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(1) > div:first-child {
-            background-color: #D2691E !important;
+        /* Use exact label selector + nth-child to isolate sliders */
+
+        /* 🪨 Coal CO₂ */
+        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(1) > div:first-child {
+            background-color: #D2691E !important;  /* Brownish Orange */
         }
-        /* Oil CO₂ (2nd slider) */
-        section[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(2) > div:first-child {
-            background-color: #4682B4 !important;
+
+        /* 🛢️ Oil CO₂ */
+        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(2) > div:first-child {
+            background-color: #4682B4 !important;  /* Steel Blue */
         }
-        /* GDP (3rd slider) */
-        section[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(3) > div:first-child {
-            background-color: #228B22 !important;
+
+        /* 💰 GDP */
+        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(3) > div:first-child {
+            background-color: #228B22 !important;  /* Forest Green */
         }
-        /* Population (4th slider) */
-        section[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(4) > div:first-child {
-            background-color: #8A2BE2 !important;
+
+        /* 👥 Population */
+        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(4) > div:first-child {
+            background-color: #8A2BE2 !important;  /* Purple */
         }
-        /* Year (5th slider) */
-        section[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(5) > div:first-child {
-            background-color: #696969 !important;
+
+        /* 📅 Year */
+        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(5) > div:first-child {
+            background-color: #696969 !important;  /* Dim Gray */
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Prepare input for model
 input_df = pd.DataFrame({
