@@ -15,20 +15,38 @@ def load_lottieurl(url: str):
 # Background image for main content only
 st.markdown("""
     <style>
-    .stApp {
-        background-image: url("https://raw.githubusercontent.com/salvin96/co2-emission-predictor/main/oso.jpeg");
+    /* Sidebar stays clean */
+    [data-testid="stSidebar"] {
+        background-color: #ffffff;
+    }
+
+    /* Main background image behind content */
+    .main::before {
+        content: "";
+        background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url("https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/oso.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-attachment: fixed;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        filter: brightness(0.95);
     }
-    .block-container {
-        background-color: rgba(255, 255, 255, 0.92);
-        padding: 2rem;
+
+    /* Make main content readable */
+    section.main > div {
+        background-color: rgba(255, 255, 255, 0.9);
         border-radius: 12px;
+        padding: 2rem;
+        margin-top: 2rem;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Lottie login animation
 lottie_login = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_yr6zz3wv.json")
