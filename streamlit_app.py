@@ -105,4 +105,18 @@ input_df = pd.DataFrame({
 # Scale input
 scaled_input = scaler.transform(input_df)
 
-# P
+# Predict
+if st.button("Predict CO₂ Emissions"):
+    prediction = model.predict(scaled_input)[0]
+
+    # CO₂ Classification
+    if prediction < 3000:
+        st.success(f"🟢 CO₂ Emission: {prediction:.2f} Megatons — **Green Zone** (Safe)")
+    elif 3000 <= prediction <= 6000:
+        st.warning(f"🟡 CO₂ Emission: {prediction:.2f} Megatons — **Yellow Zone** (Moderate)")
+    else:
+        st.error(f"🔴 CO₂ Emission: {prediction:.2f} Megatons — **Red Zone** (High!)")
+
+# Footer
+st.markdown("---")
+st.markdown("Created with ❤️ by Team 3")
