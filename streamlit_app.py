@@ -44,17 +44,36 @@ def load_scaler():
 model = load_model()
 scaler = load_scaler()
 
-# Title with user's name
+# App title
 st.title(f"🌍 CO₂ Emission Prediction App | Welcome, {st.session_state.username}!")
 
-# Sidebar inputs
-st.sidebar.header("Input Features")
+# Sidebar styled inputs
+st.sidebar.header("🎛️ Input Features")
 
-coal_co2 = st.sidebar.slider("Coal CO₂ (Mt)", 0.0, 4000.0, 1000.0)
-oil_co2 = st.sidebar.slider("Oil CO₂ (Mt)", 0.0, 4000.0, 1000.0)
-gdp = st.sidebar.slider("GDP (in trillions)", 0.0, 30.0, 15.0)
-population = st.sidebar.slider("Population (in billions)", 0.0, 1.5, 0.7)
-year = st.sidebar.slider("Year", 1950, 2025, 2020)
+# 🪨 Coal CO₂
+st.sidebar.markdown("#### <span style='color:#D2691E'>🪨 Coal CO₂ (Mt)</span>", unsafe_allow_html=True)
+coal_co2 = st.sidebar.slider("", 0.0, 4000.0, 1000.0)
+st.sidebar.caption("Emissions from coal-based energy and industry.")
+
+# 🛢️ Oil CO₂
+st.sidebar.markdown("#### <span style='color:#4682B4'>🛢️ Oil CO₂ (Mt)</span>", unsafe_allow_html=True)
+oil_co2 = st.sidebar.slider("", 0.0, 4000.0, 1000.0)
+st.sidebar.caption("Emissions from petroleum-based sources.")
+
+# 💰 GDP
+st.sidebar.markdown("#### <span style='color:#228B22'>💰 GDP (Trillions)</span>", unsafe_allow_html=True)
+gdp = st.sidebar.slider("", 0.0, 30.0, 15.0)
+st.sidebar.caption("Gross Domestic Product (economic output).")
+
+# 👥 Population
+st.sidebar.markdown("#### <span style='color:#8A2BE2'>👥 Population (Billions)</span>", unsafe_allow_html=True)
+population = st.sidebar.slider("", 0.0, 1.5, 0.7)
+st.sidebar.caption("Population of the country or region.")
+
+# 📅 Year
+st.sidebar.markdown("#### <span style='color:#696969'>📅 Year</span>", unsafe_allow_html=True)
+year = st.sidebar.slider("", 1950, 2025, 2020)
+st.sidebar.caption("Year of prediction context.")
 
 # Prepare input DataFrame
 input_df = pd.DataFrame({
