@@ -12,10 +12,42 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-# Lottie animation for welcome
+# 🌟 Lottie animation for welcome
 lottie_login = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_yr6zz3wv.json")
 
-# Login check
+# 🌍 GitHub-hosted background image URL (uploaded as oso.jpg)
+sidebar_bg_url = "https://raw.githubusercontent.com/salvin96/co2-emission-predictor/main/oso.jpg"
+
+# 🌈 Apply background to sidebar only with translucent overlay
+st.markdown(f"""
+    <style>
+    [data-testid="stSidebar"] {{
+        background-image: url('{sidebar_bg_url}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+
+    [data-testid="stSidebar"]::before {{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        z-index: 0;
+    }}
+
+    [data-testid="stSidebar"] > * {{
+        position: relative;
+        z-index: 1;
+    }}
+    </style>
+""", unsafe_allow_html=True)
+
+# 🔒 Login check
 if "username" not in st.session_state:
     st.session_state.username = ""
 
@@ -32,7 +64,7 @@ if not st.session_state.username:
             st.warning("Please enter a valid name.")
     st.stop()
 
-# Load model and scaler
+# 🔧 Load model and scaler
 @st.cache_resource
 def load_model():
     return joblib.load("random_forest_model.pkl")
@@ -44,67 +76,33 @@ def load_scaler():
 model = load_model()
 scaler = load_scaler()
 
-# App title
+# 🎯 App title
 st.title(f"🌍 CO₂ Emission Prediction App | Welcome, {st.session_state.username}!")
 
-# Sidebar input section
-st.sidebar.header("🧮 Input Features")
+# 🎛️ Sidebar inputs
+st.sidebar.header("🎛️ Input Features")
 
-# Sliders with color-coded headers
 st.sidebar.markdown("#### <span style='color:#D2691E'>🪨 Coal CO₂ (Mt)</span>", unsafe_allow_html=True)
-coal_co2 = st.sidebar.slider("coal", 0.0, 8000.0, 1000.0, label_visibility="collapsed")
+coal_co2 = st.sidebar.slider("Coal CO₂", 0.0, 8000.0, 1000.0, label_visibility="collapsed")
 st.sidebar.caption("Emissions from coal-based energy and industry.")
 
 st.sidebar.markdown("#### <span style='color:#4682B4'>🛢️ Oil CO₂ (Mt)</span>", unsafe_allow_html=True)
-oil_co2 = st.sidebar.slider("oil", 0.0, 8000.0, 1000.0, label_visibility="collapsed")
+oil_co2 = st.sidebar.slider("Oil CO₂", 0.0, 8000.0, 1000.0, label_visibility="collapsed")
 st.sidebar.caption("Emissions from petroleum-based sources.")
 
 st.sidebar.markdown("#### <span style='color:#228B22'>💰 GDP (Trillions)</span>", unsafe_allow_html=True)
-gdp = st.sidebar.slider("gdp", 0.0, 30.0, 15.0, label_visibility="collapsed")
+gdp = st.sidebar.slider("GDP", 0.0, 30.0, 15.0, label_visibility="collapsed")
 st.sidebar.caption("Gross Domestic Product (economic output).")
 
 st.sidebar.markdown("#### <span style='color:#8A2BE2'>👥 Population (Billions)</span>", unsafe_allow_html=True)
-population = st.sidebar.slider("population", 0.0, 1.5, 0.7, label_visibility="collapsed")
+population = st.sidebar.slider("Population", 0.0, 1.5, 0.7, label_visibility="collapsed")
 st.sidebar.caption("Population of the country or region.")
 
 st.sidebar.markdown("#### <span style='color:#696969'>📅 Year</span>", unsafe_allow_html=True)
-year = st.sidebar.slider("year", 1950, 2025, 2020, label_visibility="collapsed")
+year = st.sidebar.slider("Year", 1950, 2025, 2020, label_visibility="collapsed")
 st.sidebar.caption("Year of prediction context.")
 
-# Style each slider with its color using nth-of-type trick
-st.markdown("""
-    <style>
-        /* Use exact label selector + nth-child to isolate sliders */
-
-        /* 🪨 Coal CO₂ */
-        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(1) > div:first-child {
-            background-color: #D2691E !important;  /* Brownish Orange */
-        }
-
-        /* 🛢️ Oil CO₂ */
-        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(2) > div:first-child {
-            background-color: #4682B4 !important;  /* Steel Blue */
-        }
-
-        /* 💰 GDP */
-        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(3) > div:first-child {
-            background-color: #228B22 !important;  /* Forest Green */
-        }
-
-        /* 👥 Population */
-        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(4) > div:first-child {
-            background-color: #8A2BE2 !important;  /* Purple */
-        }
-
-        /* 📅 Year */
-        div[data-testid="stSidebar"] div[data-baseweb="slider"]:nth-of-type(5) > div:first-child {
-            background-color: #696969 !important;  /* Dim Gray */
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-
-# Prepare input for model
+# 📊 Prepare input
 input_df = pd.DataFrame({
     "coal_co2": [coal_co2],
     "oil_co2": [oil_co2],
@@ -115,7 +113,7 @@ input_df = pd.DataFrame({
 
 scaled_input = scaler.transform(input_df)
 
-# Prediction button
+# 🔮 Predict
 if st.button("Predict CO₂ Emissions"):
     prediction = model.predict(scaled_input)[0]
 
@@ -126,6 +124,6 @@ if st.button("Predict CO₂ Emissions"):
     else:
         st.error(f"🔴 CO₂ Emission: {prediction:.2f} Megatons — **Red Zone** (High!)")
 
-# Footer
+# 🧾 Footer
 st.markdown("---")
 st.markdown("Created with ❤️ by Team 3")
