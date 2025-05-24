@@ -22,10 +22,10 @@ scaler = load_scaler()
 # Sidebar inputs
 st.sidebar.header("Input Features")
 
-coal_co2 = st.sidebar.slider("Coal CO₂ (Mt)", 0.0, 50000.0, 10000.0)
-oil_co2 = st.sidebar.slider("Oil CO₂ (Mt)", 0.0, 50000.0, 10000.0)
+coal_co2 = st.sidebar.slider("Coal CO₂ (Mt)", 0.0, 4000.0, 1000.0)
+oil_co2 = st.sidebar.slider("Oil CO₂ (Mt)", 0.0, 4000.0, 1000.0)
 gdp = st.sidebar.slider("GDP (in trillions)", 0.0, 30.0, 15.0)
-population = st.sidebar.slider("Population (in billions)", 0.0, 10.0, 5.0)
+population = st.sidebar.slider("Population (in billions)", 0.0, 1.5, 0.7)
 year = st.sidebar.slider("Year", 1950, 2025, 2020)
 
 # Prepare input DataFrame
@@ -47,7 +47,7 @@ if st.button("Predict CO₂ Emissions"):
     # CO₂ Classification
     if prediction < 3000:
         st.success(f"🌱🟢 CO₂ Emission: {prediction:.2f} Megatons — **Green Zone** (Safe)")
-    elif 3000 <= prediction <= 8000:
+    elif 3000 <= prediction <= 6000:
         st.warning(f"🌱🟡 CO₂ Emission: {prediction:.2f} Megatons — **Yellow Zone** (Moderate)")
     else:
         st.error(f"🌱🔴 CO₂ Emission: {prediction:.2f} Megatons — **Red Zone** (High!)")
