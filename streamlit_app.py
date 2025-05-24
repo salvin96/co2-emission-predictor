@@ -74,11 +74,3 @@ if st.button("Predict CO₂ Emissions"):
 # Footer
 st.markdown("---")
 st.markdown("Created with ❤️ by Team 3")
-"""
-
-# Save the full script to file
-final_path = "/mnt/data/streamlit_app_final.py"
-with open(final_path, "w", encoding="utf-8") as f:
-    f.write(final_streamlit_code)
-
-final_path
