@@ -37,4 +37,4 @@ if st.button("Predict CO₂ Emissions"):
 
 # Footer
 st.markdown("---")
-st.markdown("Created with ❤️ by Salvin")
+st.markdown("Created with ❤️ by Team 3")
