@@ -16,7 +16,7 @@ def load_lottieurl(url: str):
 st.markdown("""
     <style>
     .stApp {
-        background-image: url("https://raw.githubusercontent.com/salvin96/co2-emission-predictor/main/oso.jpg");
+        background-image: url("https://raw.githubusercontent.com/salvin96/co2-emission-predictor/main/oso.jpeg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
